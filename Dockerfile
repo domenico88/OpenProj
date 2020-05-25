@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /src
+WORKDIR /TrueLayer
 
 COPY package*.json ./
 
@@ -8,6 +8,10 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 8080
+RUN npm install -g http-server 
 
-CMD ["npm","start"]
+RUN npm run build
+
+EXPOSE 8080 8081
+
+CMD ["http-server","dist"]
