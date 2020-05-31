@@ -14,11 +14,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
     # Run tests before pushing on heroku
       - name: Run tests
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: install
+        run: npm install
+      - name: test
         run: npm test
 
   build:
