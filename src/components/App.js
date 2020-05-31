@@ -1,11 +1,13 @@
 import React, { Fragment } from "react"
 import AddTodo from "./AddTodo"
+import TodoList from "./TodoList"
 
 
 function App(){
-    return <div>
+    return <React.Fragment>
         <AddTodo></AddTodo>
-    </div>
+        <TodoList></TodoList>
+    </React.Fragment>
 }
 
 export default App;

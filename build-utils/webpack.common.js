@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Hello Webpack bundled JavaScript Project',
+      title: 'Todo',
       template: './src/index.html'
     })
   ],

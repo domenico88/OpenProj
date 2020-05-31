@@ -1,30 +1,34 @@
-import { screen, fireEvent } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import render from './store_wrapper'
-import AddTodo from './../components/AddTodo'
 import React from 'react'
+import App from '../components/App'
+import '@testing-library/jest-dom'
 
 
 
-test('add todo', () => {
+
+describe('Test Todo list', () => {
 
 
-  render(<AddTodo />, {
-    initialState: { id_counter: 0 },
+  test('create todo', () => {
+   
+    const { getByText, getByTestId, getByRole } = render(<App />)
+
+    //check if todo name input exists and add a name
+    expect(getByTestId('todo-name').textContent).toBe("");
+    fireEvent.change(getByTestId('todo-name'), { target: { value: 'new todo' } })
+    expect(getByTestId('todo-name').value).toBe("new todo");
+
+    //check if todo description input exists and add a description
+    expect(getByTestId('todo-description').textContent).toBe("");
+    fireEvent.change(getByTestId('todo-description'), { target: { value: 'adding new todo' } })
+    expect(getByTestId('todo-description').value).toBe("adding new todo");
+
+    //check if button add exists and fire click event
+    expect(getByRole('button').textContent).toBe("Add");
+    fireEvent.click(getByText('Add'))
+   
+    //check if element has been added after click
+    expect(getByText('new todo')).toBeInTheDocument();
   })
-
-  //check if todo name input exists and add a name
-  expect(screen.getByTestId('todo-name').textContent).toBe("");
-  fireEvent.change(screen.getByTestId('todo-name'), { target: { value: 'new todo' } })
-  expect(screen.getByTestId('todo-name').value).toBe("new todo");
-
-  //check if todo description input exists and add a description
-  expect(screen.getByTestId('todo-description').textContent).toBe("");
-  fireEvent.change(screen.getByTestId('todo-description'), { target: { value: 'adding new todo' } })
-  expect(screen.getByTestId('todo-description').value).toBe("adding new todo");
-
-  //check if button add exists and fire click event
-  expect(screen.getByRole('button').textContent).toBe("Add");
-  fireEvent.click(screen.getByText('Add'))
-  
-  expect(screen.getByTestId('id-counter').textContent).toBe("1");
 });
