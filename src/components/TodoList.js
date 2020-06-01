@@ -1,14 +1,14 @@
 import React from 'react'
-import { useSelector,shallowEqual } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
+import Todo from './Todo'
+
 
 
 function TodoList() {
-    const {todo_list,id_counter} = useSelector(state=>state,shallowEqual);
-    
-    return todo_list.map((todo,i)=><div key={i}>
-        <div>{todo.name}</div>
-        <div>{todo.description}</div>
-    </div>)
+    const { todo_list } = useSelector(state => state);
+
+    return <div>
+        {Object.keys(todo_list).map((k, i) => <React.Fragment key={i}><Todo todo={todo_list[k]} id={k}></Todo></React.Fragment>)}</div>
 }
 
 export default TodoList
