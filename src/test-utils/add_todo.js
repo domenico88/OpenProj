@@ -25,7 +25,7 @@ describe('Test Todo list', () => {
     expect(getByTestId('todo-description').value).toBe("adding new todo");
 
     //check if button add exists and fire click event
-    expect(getByRole('button').textContent).toBe("Add");
+    expect(getByText('Add')).toBeInTheDocument();
     fireEvent.click(getByText('Add'))
    
     //check if element has been added after click

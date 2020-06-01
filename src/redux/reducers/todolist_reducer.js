@@ -5,8 +5,12 @@ export const initialState = { id_counter: 0, todo_list: {} }
 
 
 export function todolist_reducer(state = initialState, action) {
+   
     switch (action.type) {
         case types.ADD_TODO:
+            if (sessionStorage.getItem('Recording')==='true') {
+                save_action_in_storage(action);
+            }
             return {
                 ...state,
                 id_counter: state.id_counter + 1,
@@ -17,6 +21,9 @@ export function todolist_reducer(state = initialState, action) {
             }
 
         case types.REMOVE_TODO:
+            if (sessionStorage.getItem('Recording')==='true'){
+                save_action_in_storage(action);
+            }
             delete state.todo_list[action.id]
             return {
                 ...state,
@@ -24,10 +31,19 @@ export function todolist_reducer(state = initialState, action) {
             }
 
         case types.UPDATE_TODO:
-           
+            if (sessionStorage.getItem('Recording')==='true') {
+                save_action_in_storage(action);
+            }
             return {
                 ...state,
-                todo_list: {...state.todo_list,...action.payload}
+                todo_list: { ...state.todo_list, ...action.payload }
+            }
+
+        case types.CLEAR_TODOS:
+            return {
+                ...state,
+                id_counter: 0,
+                todo_list: []
             }
 
 
@@ -35,3 +51,9 @@ export function todolist_reducer(state = initialState, action) {
     return state;
 }
 
+
+function save_action_in_storage(action) {
+    let action_list = JSON.parse(sessionStorage.getItem('action_list')) || [];
+    let new_action_list = [...action_list, action]
+    sessionStorage.setItem('action_list', JSON.stringify(new_action_list))
+}
