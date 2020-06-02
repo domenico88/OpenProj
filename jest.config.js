@@ -6,5 +6,5 @@ module.exports = {
     ],
     
     testMatch: ['**/test-utils/**/*.js'],
-    testPathIgnorePatterns: ['/test-utils/store_wrapper.js']
+    testPathIgnorePatterns: ['/test-utils/wrapper.js']
   }

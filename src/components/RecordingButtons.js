@@ -1,16 +1,20 @@
 import React from "react"
 import { useDispatch } from 'react-redux'
 import * as types from '../redux/constants/actions'
+import Button from '../styled_components/Button'
+
+
 
 function RecordingButtons() {
     const dispatch = useDispatch();
 
 
     return <div>
-        <button onClick={() => sessionStorage.setItem('Recording', true)}>Record</button>
-        <button onClick={() => play_actions(dispatch)}>Play</button>
-        <button onClick={() => sessionStorage.setItem('Recording', false)}>Stop</button>
-        <button onClick={()=> sessionStorage.removeItem('action_list')}>Clear</button>
+        <Button onClick={() => sessionStorage.setItem('Recording', true)}>Record</Button>
+        <Button onClick={() => play_actions(dispatch)}>Play</Button>
+        <Button onClick={() => sessionStorage.setItem('Recording', false)}>Stop</Button>
+        <Button onClick={()=> sessionStorage.removeItem('action_list')}>Clear</Button>
+        
     </div>
 }
 

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import * as types from '../redux/constants/actions'
+import Todo_Div from '../styled_components/Todo_Div'
 
 
 function Todo({ todo, id }) {
@@ -12,24 +13,25 @@ function Todo({ todo, id }) {
     const [todo_name, setName] = React.useState(todo.name)
     const [todo_description, setDescription] = React.useState(todo.description)
 
-    return <div>
-        {!inputName && <label onClick={() => setInput(true)}>{todo.name}</label>}
-        {inputName &&
-            <input autoFocus
-                onBlur={() => {
+    return <Todo_Div>
+        <label onClick={() => setInput(true)}>Name</label>
+
+        <input 
+            autoFocus
+            onBlur={() => {
                 setInput(false),
                     dispatch({ type: types.UPDATE_TODO, payload: { [id]: { ...todo, name: todo_name } } })
-                }} onChange={(e) => setName(e.target.value)} value={todo_name}></input>}
-                
-        {!inputDescription && <label onClick={() => setInputDescription(true)}>{todo.description}</label>}
-        {inputDescription &&
-            <input autoFocus
-                onBlur={() => {
-                    setInputDescription(false),
-                        dispatch({ type: types.UPDATE_TODO, payload: { [id]: { ...todo, description: todo_description } } })
-                }} onChange={(e) => setDescription(e.target.value)} value={todo_description}></input>}
+            }} onChange={(e) => setName(e.target.value)} value={todo_name}></input>
+
+        <label onClick={() => setInputDescription(true)}>Description</label>
+
+        <input autoFocus
+            onBlur={() => {
+                setInputDescription(false),
+                    dispatch({ type: types.UPDATE_TODO, payload: { [id]: { ...todo, description: todo_description } } })
+            }} onChange={(e) => setDescription(e.target.value)} value={todo_description}></input>
         <FontAwesomeIcon icon={faTrash} onClick={() => dispatch({ type: types.REMOVE_TODO, id: id })}></FontAwesomeIcon>
-    </div>
+    </Todo_Div>
 }
 
 export default Todo
