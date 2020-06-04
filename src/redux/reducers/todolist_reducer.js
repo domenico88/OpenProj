@@ -1,7 +1,7 @@
 import * as types from "../constants/actions"
 
 
-export const initialState = { id_counter: 0, todo_list: {} }
+export const initialState = {  todo_list: {} }
 
 
 export function todolist_reducer(state = initialState, action) {
@@ -13,10 +13,10 @@ export function todolist_reducer(state = initialState, action) {
             }
             return {
                 ...state,
-                id_counter: state.id_counter + 1,
+                
                 todo_list: {
                     ...state.todo_list,
-                    [state.id_counter]: { name: action.todo.name, description: action.todo.description, date: action.todo.creationDate }
+                    [action.todo.id]: { id:action.todo.id, name: action.todo.name, description: action.todo.description, date: action.todo.creationDate }
                 }
             }
 
@@ -42,8 +42,7 @@ export function todolist_reducer(state = initialState, action) {
         case types.CLEAR_TODOS:
             return {
                 ...state,
-                id_counter: 0,
-                todo_list: []
+                todo_list: {}
             }
 
 

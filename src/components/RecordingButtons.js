@@ -10,10 +10,10 @@ function RecordingButtons() {
 
 
     return <React.Fragment>
-        <FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => sessionStorage.setItem('Recording', true)} cursor={'pointer'}>Record</FontAwesomeIcon>
-        <FontAwesomeIcon title="Play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon>
-        <FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => sessionStorage.setItem('Recording', false)} cursor={'pointer'}>Stop</FontAwesomeIcon>
-        <FontAwesomeIcon title="Clear" icon={faEraser} color={'white'} onClick={() => sessionStorage.removeItem('action_list')} cursor={'pointer'}>Clear</FontAwesomeIcon>
+        <div><FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => sessionStorage.setItem('Recording', true)} cursor={'pointer'}>Record</FontAwesomeIcon></div>
+        <div> <FontAwesomeIcon title="Play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => sessionStorage.setItem('Recording', false)} cursor={'pointer'}>Stop</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Clear" icon={faEraser} color={'white'} onClick={() => sessionStorage.removeItem('action_list')} cursor={'pointer'}>Clear</FontAwesomeIcon></div>
     </React.Fragment>
 }
 

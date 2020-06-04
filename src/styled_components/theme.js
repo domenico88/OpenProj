@@ -6,7 +6,7 @@ export const theme = {
         onyx: "#36313D"
     },
     body: {
-        backgroundImage: "linear-gradient(125deg, #487eb0, #fbc531)"
+        backgroundImage: "linear-gradient(180deg, #487eb0, #fbc531)"
 
     },
     button: {

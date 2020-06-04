@@ -18,10 +18,10 @@ const Todo_Div = styled.div`
         }
     }
     label{
-        font-weight: 600;
-        display: block;
-        font-size: 13px;
-        margin-left: 2px;
+       
+        font-size: 12px;
+        margin-left:2px;
+       margin-bottom:0;
         margin-top:10px;
     }
     input {
