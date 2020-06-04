@@ -1,21 +1,20 @@
 import React from "react"
 import { useDispatch } from 'react-redux'
 import * as types from '../redux/constants/actions'
-import Button from '../styled_components/Button'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRecordVinyl, faPlay, faStop, faEraser } from '@fortawesome/free-solid-svg-icons'
 
 
 function RecordingButtons() {
     const dispatch = useDispatch();
 
 
-    return <div>
-        <Button onClick={() => sessionStorage.setItem('Recording', true)}>Record</Button>
-        <Button onClick={() => play_actions(dispatch)}>Play</Button>
-        <Button onClick={() => sessionStorage.setItem('Recording', false)}>Stop</Button>
-        <Button onClick={()=> sessionStorage.removeItem('action_list')}>Clear</Button>
-        
-    </div>
+    return <React.Fragment>
+        <FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => sessionStorage.setItem('Recording', true)} cursor={'pointer'}>Record</FontAwesomeIcon>
+        <FontAwesomeIcon title="Play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon>
+        <FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => sessionStorage.setItem('Recording', false)} cursor={'pointer'}>Stop</FontAwesomeIcon>
+        <FontAwesomeIcon title="Clear" icon={faEraser} color={'white'} onClick={() => sessionStorage.removeItem('action_list')} cursor={'pointer'}>Clear</FontAwesomeIcon>
+    </React.Fragment>
 }
 
 async function play_actions(dispatch) {
@@ -23,11 +22,11 @@ async function play_actions(dispatch) {
     if (actions && actions.length > 0) {
         dispatch({ type: types.CLEAR_TODOS })
         sessionStorage.setItem('Recording', false)
-        for(let action of actions){
+        for (let action of actions) {
             await delay(1000);
             dispatch(action);
         }
-       
+
         sessionStorage.setItem('Recording', true)
     }
 

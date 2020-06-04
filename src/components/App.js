@@ -9,7 +9,6 @@ function App(){
     return <Wrapper>
         <AddTodo></AddTodo>
         <TodoList></TodoList>
-        <RecordingButtons></RecordingButtons>
     </Wrapper>
 }
 

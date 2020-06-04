@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 const Todo_Div = styled.div`
-    width: 81%;
+    width: calc(80% + 11px);
     font-size: 15px;
     padding: 7px;
     background-color: rgba(1,1,1,0.4);
