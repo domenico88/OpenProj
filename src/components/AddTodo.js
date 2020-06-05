@@ -22,7 +22,7 @@ function AddTodo() {
         <AddTodo_Wrapper onMouseEnter={() => setShowRecordButtons(true)} onMouseLeave={() => setShowRecordButtons(false)} disabled={!todoName && !todoDescription}>
             <div>
                 <FontAwesomeIcon
-                    data-testid="Add" title={'Add'} icon={faPlus} color={!todoName && is_playing ? 'grey' : 'white'}
+                    data-testid="Add" title={'Add'} icon={faPlus} color={!todoName || is_playing ? 'grey' : 'white'}
                     cursor={'pointer'}
                     onClick={() => {
                         if (todoName && !is_playing)
