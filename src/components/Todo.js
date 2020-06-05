@@ -17,9 +17,9 @@ function Todo({ todo, id }) {
     React.useEffect(() => {
         setName(todo.name);
         setDescription(todo.description);
-    }, [todo.name,todo.description])
-    
-   
+    }, [todo.name, todo.description])
+
+
     function focus() {
         todo_name_input.current.disabled = false;
         todo_description_input.current.disabled = false;
@@ -31,6 +31,15 @@ function Todo({ todo, id }) {
         todo_description_input.current.disabled = true;
     }
 
+    function checkIfTodoHasName() {
+        if (todo_name) {
+            unfocus();
+            setIsUpdating(false);
+            dispatch({ type: types.UPDATE_TODO, payload: { [id]: { ...todo, name: todo_name, description: todo_description } } })
+        }
+        else
+            alert("Todo should have at least a name")
+    }
 
     return <Todo_Div>
         <Label>Name</Label>
@@ -49,8 +58,8 @@ function Todo({ todo, id }) {
         {is_updating &&
             <FontAwesomeIcon icon={faCheck}
                 onClick={() => {
-                    unfocus();
-                    setIsUpdating(false); dispatch({ type: types.UPDATE_TODO, payload: { [id]: { ...todo, name: todo_name, description: todo_description } } })
+
+                    checkIfTodoHasName()
                 }}
                 style={{ marginRight: '16px' }} style={{ marginRight: '16px' }}></FontAwesomeIcon>}
     </Todo_Div>

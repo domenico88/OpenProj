@@ -10,24 +10,31 @@ function RecordingButtons() {
 
 
     return <React.Fragment>
-        <div><FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => sessionStorage.setItem('Recording', true)} cursor={'pointer'}>Record</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: true }); sessionStorage.setItem('Recording', true) }} cursor={'pointer'}>Record</FontAwesomeIcon></div>
         <div> <FontAwesomeIcon title="Play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon></div>
-        <div><FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => sessionStorage.setItem('Recording', false)} cursor={'pointer'}>Stop</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: false }); sessionStorage.setItem('Recording', false) }} cursor={'pointer'}>Stop</FontAwesomeIcon></div>
         <div><FontAwesomeIcon title="Clear" icon={faEraser} color={'white'} onClick={() => sessionStorage.removeItem('action_list')} cursor={'pointer'}>Clear</FontAwesomeIcon></div>
     </React.Fragment>
 }
 
 async function play_actions(dispatch) {
     let actions = JSON.parse(sessionStorage.getItem('action_list'));
+    let is_recording_in_session = sessionStorage.getItem('Recording') === 'true'
     if (actions && actions.length > 0) {
         dispatch({ type: types.CLEAR_TODOS })
-        sessionStorage.setItem('Recording', false)
+        dispatch({ type: types.IS_RECORDING, is_recording: false })
+        dispatch({ type: types.IS_PLAYING, is_playing: true })
+        if (is_recording_in_session)
+            sessionStorage.setItem('Recording', false)
         for (let action of actions) {
             await delay(1000);
             dispatch(action);
         }
-
-        sessionStorage.setItem('Recording', true)
+        dispatch({ type: types.IS_PLAYING, is_playing: false })
+        if (is_recording_in_session) {
+            sessionStorage.setItem('Recording', true)
+            dispatch({ type: types.IS_RECORDING, is_recording:is_recording_in_session} )
+        }
     }
 
 }

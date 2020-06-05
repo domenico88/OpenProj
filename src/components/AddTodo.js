@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import * as types from '../redux/constants/actions'
 import moment from 'moment'
 import Input from '../styled_components/Input'
@@ -14,7 +14,7 @@ function AddTodo() {
     const [todoName, setTodoName] = React.useState('');
     const [todoDescription, setTodoDescription] = React.useState('');
     const [showRecordButtons, setShowRecordButtons] = React.useState(false);
-
+    const {is_playing } = useSelector(state => state);
 
     return <div>
         <Input data-testid="todo-name" onChange={(e) => setTodoName(e.target.value)} placeholder="Name"></Input>
@@ -22,10 +22,10 @@ function AddTodo() {
         <AddTodo_Wrapper onMouseEnter={() => setShowRecordButtons(true)} onMouseLeave={() => setShowRecordButtons(false)} disabled={!todoName && !todoDescription}>
             <div>
                 <FontAwesomeIcon
-                    data-testid="Add" title={'Add'} icon={faPlus} color={!todoName && !todoDescription ? 'grey' : 'white'}
+                    data-testid="Add" title={'Add'} icon={faPlus} color={!todoName && is_playing ? 'grey' : 'white'}
                     cursor={'pointer'}
                     onClick={() => {
-                        if (todoName || todoDescription)
+                        if (todoName && !is_playing)
                             dispatch({ type: types.ADD_TODO, todo: {id:Date.now(), name: todoName, description: todoDescription, creationDate: moment().format("MM/DD/YYYY") } })
                     }} />
             </div>

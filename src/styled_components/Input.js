@@ -9,8 +9,10 @@ border-bottom-color: black;
 outline: none;
 margin-bottom: 15px;
 margin-right:15px;
-background-color:transparent
-
+background-color:transparent;
+::placeholder{
+    color:rgba(0,0,0,0.3)
+}
 `;
 
 

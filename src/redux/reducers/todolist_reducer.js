@@ -1,27 +1,27 @@
 import * as types from "../constants/actions"
 
 
-export const initialState = {  todo_list: {} }
+export const initialState = { is_recording: sessionStorage.getItem('Recording') === 'true' || false, todo_list: {} }
 
 
 export function todolist_reducer(state = initialState, action) {
-   
+
     switch (action.type) {
         case types.ADD_TODO:
-            if (sessionStorage.getItem('Recording')==='true') {
+            if (sessionStorage.getItem('Recording') === 'true') {
                 save_action_in_storage(action);
             }
             return {
                 ...state,
-                
+
                 todo_list: {
                     ...state.todo_list,
-                    [action.todo.id]: { id:action.todo.id, name: action.todo.name, description: action.todo.description, date: action.todo.creationDate }
+                    [action.todo.id]: { id: action.todo.id, name: action.todo.name, description: action.todo.description, date: action.todo.creationDate }
                 }
             }
 
         case types.REMOVE_TODO:
-            if (sessionStorage.getItem('Recording')==='true'){
+            if (sessionStorage.getItem('Recording') === 'true') {
                 save_action_in_storage(action);
             }
             delete state.todo_list[action.id]
@@ -29,9 +29,19 @@ export function todolist_reducer(state = initialState, action) {
                 ...state,
                 todo_list: state.todo_list
             }
+        case types.IS_RECORDING:
 
+            return {
+                ...state,
+                is_recording: action.is_recording
+            }
+        case types.IS_PLAYING:
+            return {
+                ...state,
+                is_playing: action.is_playing
+            }
         case types.UPDATE_TODO:
-            if (sessionStorage.getItem('Recording')==='true') {
+            if (sessionStorage.getItem('Recording') === 'true') {
                 save_action_in_storage(action);
             }
             return {
