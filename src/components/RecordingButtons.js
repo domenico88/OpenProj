@@ -8,11 +8,10 @@ import { faRecordVinyl, faPlay, faStop, faEraser } from '@fortawesome/free-solid
 function RecordingButtons() {
     const dispatch = useDispatch();
 
-
     return <React.Fragment>
-        <div><FontAwesomeIcon title="Record" icon={faRecordVinyl} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: true }); sessionStorage.setItem('Recording', true) }} cursor={'pointer'}>Record</FontAwesomeIcon></div>
-        <div> <FontAwesomeIcon title="Play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon></div>
-        <div><FontAwesomeIcon title="Stop" icon={faStop} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: false }); sessionStorage.setItem('Recording', false) }} cursor={'pointer'}>Stop</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Record" data-testid="recording" icon={faRecordVinyl} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: true }); sessionStorage.setItem('Recording', true) }} cursor={'pointer'}>Record</FontAwesomeIcon></div>
+        <div> <FontAwesomeIcon title="Play" data-testid="play" icon={faPlay} color={'white'} onClick={() => play_actions(dispatch)} cursor={'pointer'}>Play</FontAwesomeIcon></div>
+        <div><FontAwesomeIcon title="Stop" data-testid="stop" icon={faStop} color={'white'} onClick={() => { dispatch({ type: types.IS_RECORDING, is_recording: false }); sessionStorage.setItem('Recording', false) }} cursor={'pointer'}>Stop</FontAwesomeIcon></div>
         <div><FontAwesomeIcon title="Clear" icon={faEraser} color={'white'} onClick={() => sessionStorage.removeItem('action_list')} cursor={'pointer'}>Clear</FontAwesomeIcon></div>
     </React.Fragment>
 }
@@ -33,7 +32,7 @@ async function play_actions(dispatch) {
         dispatch({ type: types.IS_PLAYING, is_playing: false })
         if (is_recording_in_session) {
             sessionStorage.setItem('Recording', true)
-            dispatch({ type: types.IS_RECORDING, is_recording:is_recording_in_session} )
+            dispatch({ type: types.IS_RECORDING, is_recording: is_recording_in_session })
         }
     }
 

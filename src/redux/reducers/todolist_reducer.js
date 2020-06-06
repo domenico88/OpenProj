@@ -8,9 +8,9 @@ export function todolist_reducer(state = initialState, action) {
 
     switch (action.type) {
         case types.ADD_TODO:
-            if (sessionStorage.getItem('Recording') === 'true') {
-                save_action_in_storage(action);
-            }
+
+            save_action_in_storage(action);
+
             return {
                 ...state,
 
@@ -21,9 +21,9 @@ export function todolist_reducer(state = initialState, action) {
             }
 
         case types.REMOVE_TODO:
-            if (sessionStorage.getItem('Recording') === 'true') {
-                save_action_in_storage(action);
-            }
+
+            save_action_in_storage(action);
+
             delete state.todo_list[action.id]
             return {
                 ...state,
@@ -41,9 +41,9 @@ export function todolist_reducer(state = initialState, action) {
                 is_playing: action.is_playing
             }
         case types.UPDATE_TODO:
-            if (sessionStorage.getItem('Recording') === 'true') {
-                save_action_in_storage(action);
-            }
+
+            save_action_in_storage(action);
+
             return {
                 ...state,
                 todo_list: { ...state.todo_list, ...action.payload }
@@ -62,7 +62,10 @@ export function todolist_reducer(state = initialState, action) {
 
 
 function save_action_in_storage(action) {
-    let action_list = JSON.parse(sessionStorage.getItem('action_list')) || [];
-    let new_action_list = [...action_list, action]
-    sessionStorage.setItem('action_list', JSON.stringify(new_action_list))
+    let is_recording=sessionStorage.getItem("Recording");
+    if (is_recording==="true") {
+        let action_list = JSON.parse(sessionStorage.getItem('action_list')) || [];
+        let new_action_list = [...action_list, action]
+        sessionStorage.setItem('action_list', JSON.stringify(new_action_list))
+    }
 }

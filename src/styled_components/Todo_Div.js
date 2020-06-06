@@ -12,17 +12,23 @@ const Todo_Div = styled.div`
     margin-bottom: 5px;
     svg{
         float: right;
-        margin-top: -46px;
+        margin-top: -28px;
         font-size: 10px;
         cursor:pointer;
         }
+    }
+    #creationDate{
+        font-size: 9px;
+        float: right;
+        font-family: sans-serif;
+        margin-left: 2px;
     }
     label{
        
         font-size: 12px;
         margin-left:2px;
        margin-bottom:0;
-        margin-top:10px;
+        margin-top:6px;
     }
     input {
         color: white;
@@ -30,7 +36,7 @@ const Todo_Div = styled.div`
         border: 0;
         font-size: 11px;
         outline:none;
-        width:100%;
+        width:80%;
     }
 
 `;

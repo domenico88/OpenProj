@@ -41,22 +41,27 @@ function Todo({ todo, id }) {
             alert("Todo should have at least a name")
     }
 
-    return <Todo_Div>
+    return <Todo_Div data-testid="todo">
+        <div id="creationDate">{todo.date}</div>
         <Label>Name</Label>
         <input
             disabled={true}
+            data-testid="input_name"
             ref={todo_name_input}
             onChange={(e) => setName(e.target.value)} value={todo_name}></input>
 
         <Label>Description</Label>
         <input
+            data-testid="input_description"
             disabled={true}
             ref={todo_description_input}
             onChange={(e) => setDescription(e.target.value)} value={todo_description}></input>
-        <FontAwesomeIcon icon={faTrash} onClick={() => dispatch({ type: types.REMOVE_TODO, id: todo.id })}></FontAwesomeIcon>
-        {!is_updating && <FontAwesomeIcon icon={faPencilAlt} onClick={() => { focus(); setIsUpdating(true) }} style={{ marginRight: '16px' }}></FontAwesomeIcon>}
+
+        <FontAwesomeIcon data-testid="trash" icon={faTrash} onClick={() => dispatch({ type: types.REMOVE_TODO, id: todo.id })}></FontAwesomeIcon>
+        {!is_updating && <FontAwesomeIcon data-testid="pencil" icon={faPencilAlt} onClick={() => { focus(); setIsUpdating(true) }} style={{ marginRight: '16px' }}></FontAwesomeIcon>}
         {is_updating &&
             <FontAwesomeIcon icon={faCheck}
+                data-testid="check"
                 onClick={() => {
 
                     checkIfTodoHasName()
