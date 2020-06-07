@@ -23,6 +23,9 @@ module.exports = {
       template: './src/index.html'
     })
   ],
+  performance:{
+    hints:false
+  },
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
     publicPath: '/',

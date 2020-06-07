@@ -26,9 +26,17 @@
 
 > install npm packages
 
+To run in dev mode 
+
 ``` shell
 $ npm install
 $ npm start
+```
+To run in prod mode 
+
+``` shell
+$ npm run build
+$ http-server dist
 ```
 
 ## Features
