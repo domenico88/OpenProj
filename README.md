@@ -24,7 +24,6 @@
 
 ### Setup and run
 
-> install npm packages
 
 To run in dev mode 
 
