@@ -7,8 +7,8 @@ const Todo_Div = styled.div`
     width: calc(80% + 11px);
     font-size: 15px;
     padding: 7px;
-    background-color: rgba(1,1,1,0.4);
-    color: white;
+    background-color: ${props => props.theme.todo_div.backgroundColor};
+    color: ${props => props.theme.todo_div.color};
     margin-bottom: 5px;
     svg{
         float: right;

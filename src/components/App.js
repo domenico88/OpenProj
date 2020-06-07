@@ -1,4 +1,4 @@
-import React from "react"
+import React,{ Suspense } from "react"
 import AddTodo from "./AddTodo"
 import TodoList from "./TodoList"
 import Wrapper from "../styled_components/Wrapper"

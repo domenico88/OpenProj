@@ -48,6 +48,8 @@ There are also other functionalities like
 
 * For styling I used styled-components they are really easy to use , they are testable and it's easy to use a generic theme to manage all css of the application.
 
+* In the theme.js file you can find some common styles that you can change
+
 
 ## Tests 
 
