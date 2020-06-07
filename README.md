@@ -5,7 +5,7 @@
 * [![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
 * [![Coverage Status](http://img.shields.io/coveralls/badges/badgerbadgerbadger.svg?style=flat-square)](https://coveralls.io/r/badges/badgerbadgerbadger) 
 * [![devDependencies Status](https://david-dm.org/dwyl/hapi-auth-jwt2/dev-status.svg)](https://david-dm.org/dwyl/hapi-auth-jwt2?type=dev)
-* [![Code Climate](https://codeclimate.com/github/dwyl/esta/badges/gpa.svg)](https://codeclimate.com/github/dwyl/esta)
+
 
 ## Table of Contents 
 
@@ -13,8 +13,8 @@
 * [Features](#features)
 * [Styling](#styling)
 * [Tests](#tests)
-* [Prject structure](#structure)
-* [If I had more time](#next)
+* [Deployment](#deployment)
+
 
 ## Installation
 
@@ -48,16 +48,6 @@ There are also other functionalities like
 
 * For styling I used styled-components they are really easy to use , they are testable and it's easy to use a generic theme to manage all css of the application.
 
-## Project structure and scalability
-
-This is how I would manage the project structure if it was bigger than this:
-
-* /components -> I would have added different subfolders related to a specific area of the SPA and foreach component I would have added a specific styled component if needed.
-
-* /redux/reducers -> In this case I have created only one reducer but in case of more than one I would have added a root.js file to combine all reducers.
-
-* /styled_components -> This folder is just for generic styled-components.
-
 
 ## Tests 
 
@@ -69,6 +59,20 @@ $ npm test
 ```
 
 * To test this app I decided to use JEST as test runner and React testing library for unit tests that allow you to manage directly the physical DOM
+
+## Project structure and scalability
+
+This is how I would have managed the project structure if it was bigger than this:
+
+* /components -> I would have added different subfolders related to a specific area of the SPA and foreach component I would have added a specific styled component if needed.
+
+* /redux/reducers -> In this case I have created only one reducer but in case of more  I would have added a root.js file to combine all reducers.
+
+* /styled_components -> This folder is just for generic styled-components.
+
+## Deployment
+
+This application has been deployed on Heroku, you can find it here `https://truelayer-t.herokuapp.com/`
 
 ## If I had more time
 
