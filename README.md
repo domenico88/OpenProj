@@ -9,18 +9,12 @@
 
 ## Table of Contents 
 
-* [Installation](#installation)
+
 * [Features](#features)
 * [Styling](#styling)
 * [Tests](#tests)
 * [Deployment](#deployment)
 
-
-## Installation
-
-### Clone
-
-* Clone this repo to your local machine using `https://github.com/domenico88/TrueLayer.git` 
 
 ### Setup and run
 
